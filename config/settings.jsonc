@@ -24,6 +24,7 @@
       }
     }
   },
+  "terminal": { "copy_on_select": true },
   "debugger": { "dock": "left" },
   "notification_panel": { "button": false },
   "collaboration_panel": { "button": false },
