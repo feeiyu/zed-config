@@ -1,0 +1,48 @@
+[
+  {
+    "bindings": {
+      "ctrl-o": null,
+      "alt-f": "pane::DeploySearch",
+      "alt-`": "pane::RevealInProjectPanel"
+    }
+  },
+  // VIM ============================================================
+  // insert
+  {
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
+      "M M": ["workspace::SendKeystrokes", ": m a r k s enter"],
+      "s": "vim::PushSneak",
+      "S": "vim::PushSneakBackward"
+    }
+  },
+  // insert
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      "j k": "vim::SwitchToNormalMode",
+      "ctrl-s": "workspace::Save",
+      "ctrl-v": "editor::Paste"
+    }
+  },
+  // visual
+  {
+    "context": "vim_mode == visual",
+    "bindings": {
+      "shift-s": "vim::PushAddSurrounds"
+    }
+  },
+  // windows default
+  {
+    "context": "Editor && !menu",
+    "bindings": {
+      "ctrl-c": "editor::Copy", // vim default: return to normal mode
+      "ctrl-x": "editor::Cut", // vim default: decrement
+      "ctrl-v": "editor::Paste", // vim default: visual block mode
+      // "ctrl-y": "editor::Undo",          // vim default: line up
+      "ctrl-f": "buffer_search::Deploy", // vim default: page down
+      // "ctrl-o": "workspace::Open",       // vim default: go back
+      "ctrl-a": "editor::SelectAll" // vim default: increment
+    }
+  }
+]

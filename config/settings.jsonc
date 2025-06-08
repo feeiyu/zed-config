@@ -1,0 +1,37 @@
+{
+  // "proxy": "http://127.0.0.1:7890",
+  "telemetry": { "diagnostics": false, "metrics": false },
+  "features": { "edit_prediction_provider": "none" },
+  "vim_mode": true,
+  "theme": "VSCode Dark Modern",
+  "ui_font_size": 13,
+  "buffer_font_size": 13,
+  "relative_line_numbers": true,
+  "auto_reveal_entries": false,
+  "snippet_sort_order": "top",
+  "lsp": {
+    "scls": {
+      // "binary": {
+      //   "env": { "RUST_LOG": "debug", "LOG_FILE": "~/scls.log" }
+      // },
+      "initialization_options": {
+        "max_completion_items": 6, // set max completion results len for each group: words, snippets, unicode-input
+        "feature_words": true, // enable completion by word
+        "feature_unicode_input": false, // enable "unicode input"
+        "snippets_first": true, // completions will return before snippets by default
+        "feature_snippets": true, // enable snippets
+        "feature_paths": true // enable path completion
+      }
+    }
+  },
+  "debugger": { "dock": "left" },
+  "notification_panel": { "button": false },
+  "collaboration_panel": { "button": false },
+  "ssh_connections": [
+    {
+      "host": "127.0.0.1",
+      "username": "feiyu",
+      "projects": []
+    }
+  ]
+}
