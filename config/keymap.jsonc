@@ -1,48 +1,95 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
 [
   {
     "bindings": {
-      "ctrl-o": null,
-      "alt-f": "pane::DeploySearch",
-      "alt-`": "pane::RevealInProjectPanel"
-    }
+      "ctrl-o": "pane::GoBack",
+      "ctrl-i": "pane::GoForward",
+    },
   },
-  // VIM ============================================================
-  // insert
+  // Active pane
   {
-    "context": "Editor && vim_mode == normal",
+    "context": "Editor || Workspace || Pane",
     "bindings": {
-      "M M": ["workspace::SendKeystrokes", ": m a r k s enter"],
-      "s": "vim::PushSneak",
-      "S": "vim::PushSneakBackward"
-    }
+      "alt-h": "workspace::ActivatePaneLeft",
+      "alt-l": "workspace::ActivatePaneRight",
+      "alt-k": "workspace::ActivatePaneUp",
+      "alt-j": "workspace::ActivatePaneDown",
+    },
   },
-  // insert
+  // Toggle
+  {
+    "context": "Editor || Workspace || Pane",
+    "bindings": {
+      "ctrl-shift-h": "workspace::ToggleLeftDock",
+      "ctrl-shift-o": "outline_panel::ToggleFocus",
+      "ctrl-shift-j": "workspace::ToggleBottomDock",
+    },
+  },
+  // other
+  {
+    "context": "Editor || Workspace || Pane",
+    "bindings": {
+      "alt-f": "workspace::NewSearch",
+      "alt-`": "pane::RevealInProjectPanel",
+    },
+  },
   {
     "context": "Editor && vim_mode == insert",
     "bindings": {
-      "j k": "vim::SwitchToNormalMode",
-      "ctrl-s": "workspace::Save",
-      "ctrl-v": "editor::Paste"
-    }
+      "j k": "vim::NormalBefore",
+    },
   },
-  // visual
   {
-    "context": "vim_mode == visual",
+    "context": "Editor && vim_mode == insert && menu",
     "bindings": {
-      "shift-s": "vim::PushAddSurrounds"
-    }
+      "ctrl-v": "editor::Paste", // vim default: PushLiteral
+    },
   },
-  // windows default
   {
     "context": "Editor && !menu",
     "bindings": {
       "ctrl-c": "editor::Copy", // vim default: return to normal mode
       "ctrl-x": "editor::Cut", // vim default: decrement
       "ctrl-v": "editor::Paste", // vim default: visual block mode
-      // "ctrl-y": "editor::Undo",          // vim default: line up
+      "ctrl-y": "editor::Undo", // vim default: line up
       "ctrl-f": "buffer_search::Deploy", // vim default: page down
-      // "ctrl-o": "workspace::Open",       // vim default: go back
-      "ctrl-a": "editor::SelectAll" // vim default: increment
-    }
-  }
+      // "ctrl-o": "workspace::Open", // vim default: go back
+      "ctrl-s": "workspace::Save", // vim default: show signature
+      "ctrl-a": "editor::SelectAll", // vim default: increment
+      "alt-shift-f": "editor::Format",
+    },
+  },
+  {
+    "context": "Pane",
+    "bindings": {
+      "ctrl-k ctrl-p": "pane::TogglePinTab",
+    },
+  },
+  {
+    "context": "vim_mode == normal || vim_mode == visual",
+    "bindings": {
+      "s": "vim::PushSneak",
+      "shift-s": "vim::PushSneakBackward",
+    },
+  },
+  {
+    "context": "Terminal && selection",
+    "bindings": {
+      "ctrl-c": "terminal::Copy",
+    },
+  },
+  {
+    "context": "Editor && vim_mode == normal && !menu",
+    "bindings": {
+      "H": ["workspace::SendKeystrokes", "^"],
+      "L": ["workspace::SendKeystrokes", "$"],
+      "M M": ["workspace::SendKeystrokes", ": m a r k s enter"],
+    },
+  },
 ]
